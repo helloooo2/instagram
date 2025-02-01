@@ -4,6 +4,7 @@ import os
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -52,6 +53,7 @@ def login():
     # إرسال الطلب لتسجيل الدخول
     login_response = session.post(LOGIN_URL, data=login_data, headers=headers)
 
+    print(login_response.status_code)
     # التحقق من نجاح تسجيل الدخول
     if login_response.status_code == 200 and login_response.json().get("authenticated"):
         print("✅ تسجيل الدخول ناجح!")
@@ -71,7 +73,7 @@ def login():
       # يمكنك تحويلها إلى صفحة أخرى لاحقًا
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run()
 
 
