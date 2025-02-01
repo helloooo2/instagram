@@ -1,0 +1,146 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.main-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 20px;
+}
+
+.container {
+    text-align: center;
+    width: 350px;
+}
+
+.login-form {
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    padding: 45px;
+    margin-bottom: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+button {
+    width: 109%;
+    padding: 10px;
+    background-color: #0095f6;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0081e6;
+}
+
+.forgot-password {
+    color: #00376b;
+    text-decoration: none;
+    font-size: 12px;
+    display: block;
+    margin-top: 10px;
+}
+
+.error-message {
+    color: rgb(253, 54, 54);
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.signup-prompt {
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    padding: 20px;
+    font-size: 14px;
+}
+
+.signup-prompt a {
+    color: #0095f6;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.get-app {
+    margin-top: 20px;
+}
+
+.get-app p {
+    font-size: 14px;
+    color: #8e8e8e;
+}
+
+.app-stores {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.app-stores img {
+    width: 150px; /* ضبط العرض */
+    height: 50px; /* ضبط الارتفاع */
+    object-fit: contain; /* يحافظ على نسبة العرض إلى الارتفاع */
+    margin: 1px; /* مسافة بين الصور */
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #fff;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px; /* المسافة بين الروابط */
+    font-size: 12px; /* تصغير حجم الخط ليطابق الصورة */
+    color: #8e8e8e; /* لون النص */
+}
+.footer-links a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.language {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* المسافة بين العناصر */
+    font-size: 12px;
+    color: #8e8e8e;
+    margin-top: 10px;
+}
+.language select {
+    border: none;
+    background: transparent;
+    font-size: 12px;
+    color: inherit;
+    cursor: pointer;
+}
