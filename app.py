@@ -17,7 +17,7 @@ def home():
         # إذا كان اللاب توب، نعرض ملفات اللاب
         return render_template('index.html')
 
-other_site_url = "https://www.instagram.com/"
+other_site_url = "https://www.instagram.com/senkuu_297/"
 
 def favicon():
     return app.send_static_file('favicon.ico')
